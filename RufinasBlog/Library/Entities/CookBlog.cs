@@ -7,9 +7,16 @@ namespace RufinasBlog.Library.Entities
     /// <summary>
     /// Blog for cooking
     /// </summary>
-    internal class CookBlog : Blog // В конце всегда ставим наименование родительского класса
+    internal class CookBlog : Blog, ILiked, IShared
     {
         public Dictionary<string, string> Ingrediens { get; set; }
+
+        //public string Share()
+        //{
+        //    return "Выбранный вами рецепт отправлен";
+        //}
+
+        public int MaxLikes => 970;
 
         public CookBlog(string title, BlogType type, 
             Dictionary<string, string> ingrediens, List<TagType>? tags = null) 
@@ -33,6 +40,11 @@ namespace RufinasBlog.Library.Entities
                 ingredientsString += $"{ingridient.Key} - {ingridient.Value}\n";
 
             return ingredientsString;
+        }
+
+        public int AddLike(int likes)
+        {
+            return likes += 3;
         }
     }
 }

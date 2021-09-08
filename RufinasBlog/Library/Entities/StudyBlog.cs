@@ -7,10 +7,17 @@ namespace RufinasBlog.Library.Entities
     /// <summary>
     /// Blog about study
     /// </summary>
-    internal sealed class StudyBlog : Blog
+    internal sealed class StudyBlog : Blog, ILiked
     {
         public StudyBlog(string title, BlogType type, List<TagType> tags = null)
             : base(title, type, tags)  { }
+
+        public int MaxLikes => 345; 
+
+        public int AddLike(int likes)
+        {
+            return ++likes;
+        }
 
         public override string GetShortBlog()
         {

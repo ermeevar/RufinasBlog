@@ -49,6 +49,27 @@ namespace RufinasBlog
             // сокрытие
             SetEnters();
             Console.WriteLine(studyBlog.ToString());
+
+
+            // interfaces
+            List<ILiked> likedObjects = new List<ILiked>()
+            {
+                (ILiked)cookieBlog,
+                (ILiked)studyBlog
+            };
+
+            foreach (var likedObject in likedObjects)
+            {
+                Console.WriteLine();
+                Console.WriteLine(likedObject.MaxLikes);
+                Console.WriteLine(likedObject.AddLike(37));
+            }
+
+            IShared sharedObject = new CookBlog("Красный борщ", BlogType.Cook, new Dictionary<string, string>() {
+                { "Молоко", "5 стаканов" },
+                { "Яйца", "2 шт" },
+                { "Мука", "3 стакана" }});
+            Console.WriteLine(sharedObject.Share());
         }
 
         public static void SetEnters()
